@@ -163,3 +163,34 @@ document.getElementById('previous').addEventListener('click',()=>{
     playelement.classList.remove('fa-play-circle');
     playelement.classList.add('fa-pause-circle');
 });
+audioe.addEventListener('ended',()=>{
+    if(songin>5){
+        document.getElementById(songin.toString()).classList.remove('fa-pause-circle');
+        document.getElementById(songin.toString()).classList.add('fa-play-circle');
+        document.getElementById(songin.toString()).parentNode.parentNode.style.background='white';
+        songin=1;
+        document.getElementById(songin.toString()).classList.remove('fa-play-circle');
+        document.getElementById(songin.toString()).classList.add('fa-pause-circle');
+        document.getElementById(songin.toString()).parentNode.parentNode.style.background='#ccc9c8';
+    }   
+    else{
+        let currents=songin.toString();
+        let currente=document.getElementById(currents);
+        currente.classList.remove('fa-pause-circle');
+        currente.classList.add('fa-play-circle');
+        currente.parentNode.parentNode.style.background='white';
+        songin+=1
+        let next=songin.toString();
+        let nexte=document.getElementById(next);
+        nexte.classList.remove('fa-play-circle');
+        nexte.classList.add('fa-pause-circle');
+        nexte.parentNode.parentNode.style.background='#ccc9c8'
+    }
+    gif.style.opacity=1;
+    audioe.src=`songs/${songin}.mp3`;
+    msong.innerText=songs[songin-1].songname;
+    audioe.currentTime=0;
+    playelement.classList.remove('fa-play-circle');
+    playelement.classList.add('fa-pause-circle');
+    audioe.play();
+});
